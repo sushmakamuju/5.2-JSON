@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Taco Recipes</title>
+  <link rel="stylesheet" type="text/css" href="/styles/main.css">
+</head>
+
+<body>
+  <h1>Taco Town 🌮</h1>
+
+  <form action="/recipe" method="POST" class="buttons">
+    <button type="submit" value="chicken" name="choice">🍗</button>
+    <button type="submit" value="beef" name="choice">🥩</button>
+    <button type="submit" value="fish" name="choice">🐟</button>
+  </form>
+  <div id="recipeContainer" class="hidden">
+    <!-- If no recipe yet, show: -->
+    <% if(locals.x){ %>
+      <h2>
+        <%= x+" "+"Taco" %>
+      </h2>
+    <% }else { %>
+    <h2>Pick your favourite taco ingredient 👆</h2>
+    <% } %>
+    <!-- Else, show the recipe name e.g. <h2>Recipe name</h2>-->
+
+    <h3>Ingredients:</h3>
+    <ul id="ingredientsList">
+      <%if(locals.y){%>
+        <!-- 1 y.protein go to this and print 'y.protein.name+" "+y.protein.preparation' -->
+        <!-- 2 y.salsa go to this and print salsa.name -->
+        <%console.log(y);  %>
+        <li><%= y.protein.name +" "+y.protein.preparation %> </li>
+        <li><%= y.salsa.name %> </li>
+        <%for(var i of y.toppings){%>
+        <li><%= i.quantity +" "+i.name %> </li>
+        <% } %>
+        <!-- 3 y is an object inside that toppings is variable , which is an arrray go to that 
+        print ' "quantity +" "+name"' -->
+     <%  }else{ %>
+        <li>Protein name, protein preparation</li>
+        <li>Salsa name</li>
+        <li>Every other topping</li>
+      <% } %>
+      
+    </ul>
+
+
+
+  </div>
+</body>
+
+</html>
